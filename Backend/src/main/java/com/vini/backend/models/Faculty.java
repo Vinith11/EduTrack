@@ -13,10 +13,12 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Faculty {
-    @Id
+
     private String facultyUid;
     private String facultyName;
     private String facultyPhone;
+
+    @Id
     private String facultyEmail;
     private String facultyRole;
     private String facultyPassword;

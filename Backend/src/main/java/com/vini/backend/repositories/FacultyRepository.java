@@ -11,6 +11,6 @@ import java.util.List;
 public interface FacultyRepository extends JpaRepository<Faculty, String> {
     public Faculty findByFacultyEmail(String email);
 
-    //public List<Faculty> findAllByOrderByCreatedAtDesc();
+    public List<Faculty> findAllFacultyByOrderByFacultyUid();
 
 }
