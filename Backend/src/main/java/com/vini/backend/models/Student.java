@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Student {
 
+    @Id
     private String usn;
     private String studentName;
     private String studentPhone;
 
-    @Id
     private String studentEmail;
     private String studentBatch;
     private String studentPassword;

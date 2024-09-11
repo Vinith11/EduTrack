@@ -1,17 +1,17 @@
-package com.vini.backend.service;
+package com.vini.backend.service.implementaion;
 
 import com.vini.backend.config.JwtTokenProvider;
 import com.vini.backend.exception.UserException;
-import com.vini.backend.models.Faculty;
 import com.vini.backend.models.Student;
 import com.vini.backend.repositories.StudentRepository;
+import com.vini.backend.service.StudentUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentUserServiceImplementation implements StudentUserService{
+public class StudentUserServiceImplementation implements StudentUserService {
 
     private StudentRepository studentRepository;
     private JwtTokenProvider jwtTokenProvider;

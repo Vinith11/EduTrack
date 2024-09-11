@@ -1,9 +1,10 @@
-package com.vini.backend.service;
+package com.vini.backend.service.implementaion;
 
 import com.vini.backend.config.JwtTokenProvider;
 import com.vini.backend.exception.UserException;
 import com.vini.backend.models.Faculty;
 import com.vini.backend.repositories.FacultyRepository;
+import com.vini.backend.service.FacultyUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

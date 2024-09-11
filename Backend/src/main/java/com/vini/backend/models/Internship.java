@@ -1,6 +1,7 @@
 // src/main/java/com/vini/backend/models/Internship.java
 package com.vini.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,13 @@ public class Internship {
     private Long internshipId;
     private String studentUsn;
     private String academicYear;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate internshipStart;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate internshipEnd;
+
     private String internshipDuration;
     private String internshipCertificate;
     private String internshipLocation;
@@ -28,7 +34,7 @@ public class Internship {
     private String internshipEvaluationSheet;
     private String internshipCompletionCertificateUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "internshipGuide", referencedColumnName = "facultyUid")
     private Faculty internshipGuide;
 }

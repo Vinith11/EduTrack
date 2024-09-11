@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InternshipRepository extends JpaRepository<Internship, Long> {
+    public Internship findByStudentUsn(String usn);
 }
