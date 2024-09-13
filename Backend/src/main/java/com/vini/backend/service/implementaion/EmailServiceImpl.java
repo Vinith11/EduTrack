@@ -42,6 +42,50 @@ public class EmailServiceImpl implements EmailService {
             throw new Exception("Error while sending email: " + e.getMessage());
         }
     }
+
+    @Override
+    public void sendRejectionEmail(String toEmail, Project project) throws Exception {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
+            message.setTo(toEmail);
+            message.setSubject("Project Rejected: " + project.getStudentProjectName());
+            message.setText("Dear Student,\n\n" +
+                    "Your project has been rejected by the faculty.\n\n" +
+                    "Project Name: " + project.getStudentProjectName() + "\n" +
+                    "Project Leader: " + project.getStudentProjectLeaderId() + "\n" +
+                    "Team Members: " + String.join(", ", project.getTeamMembers()) + "\n" +
+                    "Project Description: " + project.getStudentProjectDescription() + "\n\n" +
+                    "Please contact your faculty for more details.\n\n" +
+                    "Thank you!");
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            throw new Exception("Error while sending email: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void sendAcceptEmail(String toEmail, Project project) throws Exception {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
+            message.setTo(toEmail);
+            message.setSubject("Project Approved: " + project.getStudentProjectName());
+            message.setText("Dear Student,\n\n" +
+                    "Your project has been approved by the faculty.\n\n" +
+                    "Project Name: " + project.getStudentProjectName() + "\n" +
+                    "Project Leader: " + project.getStudentProjectLeaderId() + "\n" +
+                    "Team Members: " + String.join(", ", project.getTeamMembers()) + "\n" +
+                    "Project Description: " + project.getStudentProjectDescription() + "\n\n" +
+                    "You can now start working on your project.\n\n" +
+                    "Thank you!");
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            throw new Exception("Error while sending email: " + e.getMessage());
+        }
+    }
 }
 
 

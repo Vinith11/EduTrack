@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface EmailService {
     void sendApprovalRequestEmail(String toEmail, Project project) throws Exception;
+    void sendRejectionEmail(String toEmail, Project project) throws Exception;
+    void sendAcceptEmail(String toEmail, Project project) throws Exception;
+
 }
 

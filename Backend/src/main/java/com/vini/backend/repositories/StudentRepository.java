@@ -13,4 +13,6 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 
     public List<Student> findAllStudentByOrderByUsn();
 
+    public  Student findByUsn(String usn);
+
 }

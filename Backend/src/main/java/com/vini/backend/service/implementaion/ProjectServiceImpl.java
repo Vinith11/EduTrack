@@ -36,6 +36,8 @@ public class ProjectServiceImpl implements ProjectService {
             throw new Exception("Team must have 2-4 members including the leader.");
         }
 
+
+
         // Set the team members
         projectRequest.setTeamMembers(studentIds);
         projectRequest.setFacultyApprovalStatus(false);  // Initially not approved
@@ -53,16 +55,21 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void updateFacultyApproval(Long projectId, boolean isApproved) {
+    public void updateFacultyApproval(Long projectId, boolean isApproved) throws Exception{
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found"));
-
-        project.setFacultyApprovalStatus(isApproved);
-        projectRepository.save(project);
+                .orElseThrow(() -> new Exception("Project not found"));
+        Student student = studentRepository.findByUsn(project.getStudentProjectLeaderId());
 
         // Notify students if approved
         if (isApproved) {
             // Additional notification or update logic can be added here
+            project.setFacultyApprovalStatus(isApproved);
+            projectRepository.save(project);
+            emailService.sendAcceptEmail(student.getStudentEmail(), project);
+        } else{
+            emailService.sendRejectionEmail(student.getStudentEmail(), project);
+            projectRepository.delete(project);
+
         }
     }
 

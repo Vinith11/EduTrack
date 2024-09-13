@@ -36,7 +36,7 @@ public class ProjectController {
 
     // Endpoint to update faculty approval
     @PostMapping("/{projectId}/approve")
-    public ResponseEntity<ApiResponse> updateFacultyApproval(@PathVariable Long projectId, @RequestParam boolean isApproved) {
+    public ResponseEntity<ApiResponse> updateFacultyApproval(@PathVariable Long projectId, @RequestParam boolean isApproved) throws Exception {
         projectService.updateFacultyApproval(projectId, isApproved);
         ApiResponse res = new ApiResponse();
         res.setMessage("Faculty approval updated");

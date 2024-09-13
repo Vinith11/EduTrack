@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ProjectService {
     Project createProjectGroup(Project projectRequest, List<String> studentIds) throws Exception;
-    void updateFacultyApproval(Long projectId, boolean isApproved);
+    void updateFacultyApproval(Long projectId, boolean isApproved) throws Exception;
     void completeProject(Long projectId);
 }
