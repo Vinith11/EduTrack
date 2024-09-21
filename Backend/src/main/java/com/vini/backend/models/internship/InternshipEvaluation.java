@@ -1,5 +1,5 @@
 // src/main/java/com/vini/backend/models/InternshipEvaluation.java
-package com.vini.backend.models;
+package com.vini.backend.models.internship;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

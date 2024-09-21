@@ -20,10 +20,6 @@ public class ProjectEvaluation {
     private Integer evaluationScore;
 
     @ManyToOne
-    @JoinColumn(name = "usn", referencedColumnName = "usn")
-    private Student student;
-
-    @ManyToOne
     @JoinColumn(name = "projectId", referencedColumnName = "projectId")
     private Project project;
 

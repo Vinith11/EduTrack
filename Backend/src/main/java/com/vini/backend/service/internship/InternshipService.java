@@ -1,15 +1,17 @@
-package com.vini.backend.service;
+package com.vini.backend.service.internship;
 
-import com.vini.backend.exception.UserException;
-import com.vini.backend.models.Internship;
+import com.vini.backend.exception.InternshipNotFoundException;
+import com.vini.backend.exception.StudentNotFoundException;
+import com.vini.backend.models.internship.Internship;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface InternshipService {
-    Internship saveInternship(Internship internship);
-    Internship updateInternship(Long id, Internship internship);
-    void deleteInternship(Long id);
-    Internship getInternshipById(Long id);
     List<Internship> getAllInternships();
-
+    Optional<Internship> getInternshipById(Long internshipId) throws InternshipNotFoundException;
+    Internship createInternship(Internship internship) ;
+    Internship updateInternship(Long internshipId, Internship internship) throws InternshipNotFoundException;
+    void deleteInternship(Long internshipId) throws InternshipNotFoundException;
+    List<Internship> getInternshipsByStudentUsn(String studentUsn) throws StudentNotFoundException;
 }

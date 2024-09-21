@@ -23,9 +23,6 @@ public class Faculty {
     private String facultyEmail;
     private String facultyRole;
 
-    // This to avoid password being visible during API calls
-    // Another way to do this is to create custom DTO(i.e response)
-    // @JsonIgnore
     private String facultyPassword;
 }
 

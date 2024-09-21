@@ -24,6 +24,7 @@ public class AppConfig {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeHttpRequests(Authorize -> Authorize
+						.requestMatchers("/swagger-ui/**").permitAll()
 						.requestMatchers("/api/**").authenticated()       // Require authentication for other /api/** endpoints
 						.anyRequest().permitAll()
 				)

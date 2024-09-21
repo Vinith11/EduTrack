@@ -37,7 +37,6 @@ public class ProjectServiceImpl implements ProjectService {
         }
 
 
-
         // Set the team members
         projectRequest.setTeamMembers(studentIds);
         projectRequest.setFacultyApprovalStatus(false);  // Initially not approved
@@ -50,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(() -> new Exception("Faculty not found"));
 
         emailService.sendApprovalRequestEmail(faculty.getFacultyEmail(), savedProject);
-
+        
         return savedProject;
     }
 

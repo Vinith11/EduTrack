@@ -2,7 +2,7 @@
 // src/main/java/com/vini/backend/repositories/InternshipFeedbackRepository.java
 package com.vini.backend.repositories;
 
-import com.vini.backend.models.FacultyInternshipFeedback;
+import com.vini.backend.models.internship.FacultyInternshipFeedback;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

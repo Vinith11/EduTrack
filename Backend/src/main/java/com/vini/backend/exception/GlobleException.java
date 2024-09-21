@@ -58,4 +58,24 @@ public class GlobleException {
 		return new ResponseEntity<ErrorDetails>(error,HttpStatus.ACCEPTED);
 	}
 
+
+	@ExceptionHandler(InternshipNotFoundException.class)
+	public ResponseEntity<ErrorDetails> InternshipNotFoundExceptionHandler(InternshipNotFoundException ue, WebRequest req){
+
+		ErrorDetails err= new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
+
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+
+	}
+
+
+	@ExceptionHandler(StudentNotFoundException.class)
+	public ResponseEntity<ErrorDetails> StudentNotFoundExceptionHandler(StudentNotFoundException ue, WebRequest req){
+
+		ErrorDetails err= new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
+
+		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
+
+	}
+
 }
