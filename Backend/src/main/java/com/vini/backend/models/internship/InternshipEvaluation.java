@@ -21,12 +21,8 @@ public class InternshipEvaluation {
     private String facultyEvaluationStatus;
     private String facultyEvaluationYear;
 
-    @ManyToOne
-    @JoinColumn(name = "internshipId", referencedColumnName = "internshipId")
-    private Internship internship;
+    private Long internshipId;
 
-    @ManyToOne
-    @JoinColumn(name = "evaluatorId", referencedColumnName = "facultyUid")
-    private Faculty evaluator;
+    private Long facultyUid;
 }
 

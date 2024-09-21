@@ -1,10 +1,10 @@
 package com.vini.backend.controller;
 
 import com.vini.backend.exception.UserException;
-import com.vini.backend.models.Internship;
+import com.vini.backend.models.internship.Internship;
 import com.vini.backend.models.Student;
 import com.vini.backend.response.ApiResponse;
-import com.vini.backend.service.InternshipService;
+import com.vini.backend.service.internship.InternshipService;
 import com.vini.backend.service.StudentUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

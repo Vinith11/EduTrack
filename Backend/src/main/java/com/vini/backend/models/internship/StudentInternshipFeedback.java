@@ -1,4 +1,4 @@
-// src/main/java/com/vini/backend/models/InternshipFeedback.java
+// src/main/java/com/vini/backend/models/StudentInternshipFeedback.java
 package com.vini.backend.models;
 
 import lombok.AllArgsConstructor;
@@ -12,18 +12,15 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FacultyInternshipFeedback {
+public class StudentInternshipFeedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackId;
     private String feedbackText;
     private LocalDate feedbackDate;
 
-    @ManyToOne
-    @JoinColumn(name = "internshipId", referencedColumnName = "internshipId")
-    private Internship internship;
+    private Long internshipId;
 
-    @ManyToOne
-    @JoinColumn(name = "facultyUid", referencedColumnName = "facultyUid")
-    private Faculty faculty;
+    private Long usn;
 }
+

@@ -34,7 +34,5 @@ public class Internship {
     private String internshipEvaluationSheet;
     private String internshipCompletionCertificateUrl;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "internshipGuide", referencedColumnName = "facultyUid")
-    private Faculty internshipGuide;
+    private Long facultyUid;
 }
