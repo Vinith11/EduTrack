@@ -1,6 +1,7 @@
 // src/main/java/com/vini/backend/models/ProjectEvaluation.java
-package com.vini.backend.models;
+package com.vini.backend.models.project;
 
+import com.vini.backend.models.Faculty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

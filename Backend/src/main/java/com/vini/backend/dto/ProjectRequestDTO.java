@@ -1,9 +1,7 @@
 package com.vini.backend.dto;
 
-import com.vini.backend.models.Project;
-import lombok.*;
+import com.vini.backend.models.project.Project;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class ProjectRequestDTO {

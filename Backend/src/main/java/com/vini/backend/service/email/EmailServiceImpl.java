@@ -1,16 +1,11 @@
-package com.vini.backend.service.implementaion;
+package com.vini.backend.service.email;
 
-import com.vini.backend.models.Project;
-import com.vini.backend.models.Student;
-import com.vini.backend.service.EmailService;
+import com.vini.backend.models.project.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -22,8 +17,8 @@ public class EmailServiceImpl implements EmailService {
     private String fromEmail;
 
     @Override
-    public void sendApprovalRequestEmail(String toEmail, Project project) throws Exception {
-        try {
+    public void sendApprovalRequestEmail(String toEmail, Project project) {
+
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(fromEmail);
             message.setTo(toEmail);
@@ -38,14 +33,12 @@ public class EmailServiceImpl implements EmailService {
                     "Thank you!");
 
             mailSender.send(message);
-        } catch (Exception e) {
-            throw new Exception("Error while sending email: " + e.getMessage());
-        }
+
     }
 
     @Override
-    public void sendRejectionEmail(String toEmail, Project project) throws Exception {
-        try {
+    public void sendRejectionEmail(String toEmail, Project project) {
+
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(fromEmail);
             message.setTo(toEmail);
@@ -60,14 +53,12 @@ public class EmailServiceImpl implements EmailService {
                     "Thank you!");
 
             mailSender.send(message);
-        } catch (Exception e) {
-            throw new Exception("Error while sending email: " + e.getMessage());
-        }
+
     }
 
     @Override
-    public void sendAcceptEmail(String toEmail, Project project) throws Exception {
-        try {
+    public void sendAcceptEmail(String toEmail, Project project) {
+
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(fromEmail);
             message.setTo(toEmail);
@@ -82,9 +73,7 @@ public class EmailServiceImpl implements EmailService {
                     "Thank you!");
 
             mailSender.send(message);
-        } catch (Exception e) {
-            throw new Exception("Error while sending email: " + e.getMessage());
-        }
+
     }
 }
 

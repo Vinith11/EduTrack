@@ -1,6 +1,5 @@
-package com.vini.backend.models;
+package com.vini.backend.models.project;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
