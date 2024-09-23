@@ -21,5 +21,5 @@ public class FacultyInternshipFeedback {
 
     private Long internshipId;
 
-    private Long facultyUid;
+    private String facultyUid;
 }

@@ -33,5 +33,5 @@ public class Internship {
     private String internshipEvaluationSheet;
     private String internshipCompletionCertificateUrl;
 
-    private Long facultyUid;
+    private String facultyUid;
 }

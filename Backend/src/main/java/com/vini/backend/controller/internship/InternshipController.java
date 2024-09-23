@@ -1,7 +1,6 @@
 package com.vini.backend.controller.internship;
 
-import com.vini.backend.exception.InternshipNotFoundException;
-import com.vini.backend.exception.StudentNotFoundException;
+import com.vini.backend.exception.NotFoundException;
 import com.vini.backend.models.internship.Internship;
 import com.vini.backend.response.AuthResponse;
 import com.vini.backend.service.internship.InternshipService;
@@ -27,20 +26,20 @@ public class InternshipController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Internship> getInternshipById(@PathVariable Long id) throws InternshipNotFoundException {
+    public ResponseEntity<Internship> getInternshipById(@PathVariable Long id) throws NotFoundException {
         Optional<Internship> internship = internshipService.getInternshipById(id);
         return internship.map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Internship> createInternship(@RequestBody Internship internship) {
+    public ResponseEntity<Internship> createInternship(@RequestBody Internship internship) throws NotFoundException{
         Internship createdInternship = internshipService.createInternship(internship);
         return new ResponseEntity<>(createdInternship, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Internship> updateInternship(@PathVariable Long id, @RequestBody Internship internship) throws InternshipNotFoundException {
+    public ResponseEntity<Internship> updateInternship(@PathVariable Long id, @RequestBody Internship internship) throws NotFoundException {
         Internship updatedInternship = internshipService.updateInternship(id, internship);
         if (updatedInternship != null) {
             return new ResponseEntity<>(updatedInternship, HttpStatus.OK);
@@ -50,7 +49,7 @@ public class InternshipController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<AuthResponse> deleteInternship(@PathVariable Long id) throws InternshipNotFoundException{
+    public ResponseEntity<AuthResponse> deleteInternship(@PathVariable Long id) throws NotFoundException{
         Optional<Internship>  internship = internshipService.getInternshipById(id);
         internshipService.deleteInternship(id);
         AuthResponse res = new AuthResponse("Internship Deleted Successfully", true);
@@ -59,7 +58,7 @@ public class InternshipController {
 
     // New API endpoint to get internships by student USN
     @GetMapping("/student/{studentUsn}")
-    public ResponseEntity<List<Internship>> getInternshipsByStudentUsn(@PathVariable String studentUsn) throws StudentNotFoundException {
+    public ResponseEntity<List<Internship>> getInternshipsByStudentUsn(@PathVariable String studentUsn) throws NotFoundException {
         List<Internship> internships = internshipService.getInternshipsByStudentUsn(studentUsn);
         return new ResponseEntity<>(internships, HttpStatus.OK);
     }

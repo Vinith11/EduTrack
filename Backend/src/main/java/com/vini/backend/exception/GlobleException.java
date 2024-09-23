@@ -59,8 +59,8 @@ public class GlobleException {
 	}
 
 
-	@ExceptionHandler(InternshipNotFoundException.class)
-	public ResponseEntity<ErrorDetails> InternshipNotFoundExceptionHandler(InternshipNotFoundException ue, WebRequest req){
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<ErrorDetails> NotFoundExceptionHandler(NotFoundException ue, WebRequest req){
 
 		ErrorDetails err= new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
 
@@ -68,14 +68,5 @@ public class GlobleException {
 
 	}
 
-
-	@ExceptionHandler(StudentNotFoundException.class)
-	public ResponseEntity<ErrorDetails> StudentNotFoundExceptionHandler(StudentNotFoundException ue, WebRequest req){
-
-		ErrorDetails err= new ErrorDetails(ue.getMessage(),req.getDescription(false),LocalDateTime.now());
-
-		return new ResponseEntity<ErrorDetails>(err,HttpStatus.BAD_REQUEST);
-
-	}
 
 }

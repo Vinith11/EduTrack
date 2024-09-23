@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -30,7 +29,9 @@ public class Project {
     private String studentProjectGuideId;  // Faculty assigned as a guide
     private String studentProjectDomain;
     private String studentProjectDescription;
+
     private String studentProjectType;
+
     private String studentProjectReport;
     private LocalDate studentProjectStart;
 

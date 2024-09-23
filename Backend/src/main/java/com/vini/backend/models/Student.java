@@ -19,12 +19,9 @@ public class Student {
     private String studentEmail;
     private String studentBatch;
 
-    //@JsonIgnore
     private String studentPassword;
 
-    @ManyToOne
-    @JsonBackReference  // Add this annotation to break the circular dependency
-    private Project project;
+    private Long projectId;
 
     private boolean isLeader; // New field to indicate if the student is a leader
 }

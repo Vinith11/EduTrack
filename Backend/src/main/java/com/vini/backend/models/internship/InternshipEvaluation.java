@@ -18,11 +18,10 @@ public class InternshipEvaluation {
     private Long evaluationId;
     private LocalDate evaluationDate;
     private Integer evaluationScore;
-    private String facultyEvaluationStatus;
     private String facultyEvaluationYear;
 
     private Long internshipId;
 
-    private Long facultyUid;
+    private String facultyUid;
 }
 

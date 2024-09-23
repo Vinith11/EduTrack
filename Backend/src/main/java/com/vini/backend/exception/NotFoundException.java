@@ -1,8 +1,8 @@
 package com.vini.backend.exception;
 
-public class StudentNotFoundException extends Exception {
+public class NotFoundException extends Exception {
 
-    public StudentNotFoundException(String message) {
+    public NotFoundException(String message) {
         super(message);
         // TODO Auto-generated constructor stub
     }

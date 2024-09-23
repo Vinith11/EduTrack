@@ -13,4 +13,6 @@ public interface FacultyRepository extends JpaRepository<Faculty, String> {
 
     public List<Faculty> findAllFacultyByOrderByFacultyUid();
 
+    public  Faculty findByFacultyUid(String facultyUid);
+
 }

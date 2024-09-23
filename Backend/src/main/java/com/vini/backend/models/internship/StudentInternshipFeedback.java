@@ -21,6 +21,6 @@ public class StudentInternshipFeedback {
 
     private Long internshipId;
 
-    private Long usn;
+    private String usn;
 }
 
