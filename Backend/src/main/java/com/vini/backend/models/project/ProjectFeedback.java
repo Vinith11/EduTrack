@@ -1,7 +1,5 @@
-// src/main/java/com/vini/backend/models/ProjectFeedback.java
 package com.vini.backend.models.project;
 
-import com.vini.backend.models.Faculty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +18,7 @@ public class ProjectFeedback {
     private String feedbackText;
     private LocalDate feedbackDate;
 
-    @ManyToOne
-    @JoinColumn(name = "projectId", referencedColumnName = "projectId")
-    private Project project;
+    private Long projectId;
 
-    @ManyToOne
-    @JoinColumn(name = "facultyUid", referencedColumnName = "facultyUid")
-    private Faculty faculty;
+    private String facultyUid;
 }

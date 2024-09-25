@@ -1,7 +1,5 @@
-// src/main/java/com/vini/backend/models/ProjectEvaluation.java
 package com.vini.backend.models.project;
 
-import com.vini.backend.models.Faculty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,12 +18,8 @@ public class ProjectEvaluation {
     private LocalDate evaluationDate;
     private Integer evaluationScore;
 
-    @ManyToOne
-    @JoinColumn(name = "projectId", referencedColumnName = "projectId")
-    private Project project;
+    private Long projectId;
 
-    @ManyToOne
-    @JoinColumn(name = "evaluatorId", referencedColumnName = "facultyUid")
-    private Faculty evaluator;
+    private String facultyUid;
 }
 
