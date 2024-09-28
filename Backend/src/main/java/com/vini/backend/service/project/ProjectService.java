@@ -12,4 +12,5 @@ public interface ProjectService {
     List<Project> pendingAproveProjects(String facultyUid) throws NotFoundException;
     List<Project> getProjectsByFacultyUidByBatch(String facultyUid, String batch) throws NotFoundException;
     List<Project> getProjectsByBatch(String batch) throws NotFoundException;
+    void deleteProject(Long projectId) throws NotFoundException;
 }

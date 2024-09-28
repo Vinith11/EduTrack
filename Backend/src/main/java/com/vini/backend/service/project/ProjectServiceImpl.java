@@ -10,6 +10,7 @@ import com.vini.backend.repositories.FacultyRepository;
 import com.vini.backend.repositories.ProjectRepository;
 import com.vini.backend.repositories.StudentRepository;
 import com.vini.backend.service.email.EmailService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -168,6 +169,32 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> getProjectsByBatch(String batch) throws NotFoundException {
         return projectRepository.findByAcademicYearAndFacultyApprovalStatus(batch, true);
+    }
+
+    @Override
+    @Transactional
+    public void deleteProject(Long projectId) throws NotFoundException {
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new NotFoundException("Project not found."));
+
+        FacultyProjectGuide guide = facultyProjectGuideRepository.findFacultyProjectGuideByProjectId(projectId);
+        facultyProjectGuideRepository.delete(guide);
+
+        Student leader = studentRepository.findById(project.getStudentProjectLeaderId())
+                .orElseThrow(() -> new NotFoundException("Leader not found."));
+        leader.setLeader(false);
+        leader.setProjectId(null);
+        studentRepository.save(leader);
+
+        List<String> members = project.getTeamMembers();
+        for (String memberId : members) {
+            Student member = studentRepository.findById(memberId)
+                    .orElseThrow(() -> new NotFoundException("Member not found."));
+            member.setProjectId(null);
+            studentRepository.save(member);
+        }
+
+        projectRepository.delete(project);
     }
 }
 
