@@ -2,6 +2,7 @@ package com.vini.backend.controller.project;
 
 import com.vini.backend.exception.NotFoundException;
 import com.vini.backend.models.project.Project;
+import com.vini.backend.response.ApiResponse;
 import com.vini.backend.service.project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,12 @@ public class ProjectController {
     public ResponseEntity<List<Project>> getProjectsByBatch(@PathVariable String batch) throws NotFoundException {
             List<Project> projects = projectService.getProjectsByBatch(batch);
             return ResponseEntity.ok(projects);
+    }
+
+    @DeleteMapping("/delete/{projectId}")
+    public ResponseEntity<ApiResponse> deleteProject(@PathVariable Long projectId) throws NotFoundException {
+            projectService.deleteProject(projectId);
+            ApiResponse apiResponse = new ApiResponse("Project deleted successfully", true);
+            return ResponseEntity.ok(apiResponse);
     }
 }

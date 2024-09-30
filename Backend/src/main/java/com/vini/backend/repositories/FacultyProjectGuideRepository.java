@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FacultyProjectGuideRepository extends JpaRepository<FacultyProjectGuide, Long> {
     Long countByFacultyUidAndBatch(String facultyUid, String batch);
-
 }
