@@ -2,6 +2,7 @@ package com.vini.backend.controller.internship;
 
 import com.vini.backend.exception.NotFoundException;
 import com.vini.backend.models.internship.Internship;
+import com.vini.backend.response.ApiResponse;
 import com.vini.backend.response.AuthResponse;
 import com.vini.backend.service.internship.InternshipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +50,10 @@ public class InternshipController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<AuthResponse> deleteInternship(@PathVariable Long id) throws NotFoundException{
+    public ResponseEntity<ApiResponse> deleteInternship(@PathVariable Long id) throws NotFoundException{
         Optional<Internship>  internship = internshipService.getInternshipById(id);
         internshipService.deleteInternship(id);
-        AuthResponse res = new AuthResponse("Internship Deleted Successfully", true);
+        ApiResponse res = new ApiResponse("Internship Deleted Successfully", true);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
