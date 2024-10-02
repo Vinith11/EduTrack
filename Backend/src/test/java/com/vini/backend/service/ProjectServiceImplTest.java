@@ -22,14 +22,16 @@ import com.vini.backend.service.project.ProjectServiceImpl;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-@SpringBootTest
-@Transactional
+@ExtendWith(MockitoExtension.class)
 public class ProjectServiceImplTest {
 
     @Mock
@@ -44,22 +46,22 @@ public class ProjectServiceImplTest {
     @Mock
     private FacultyProjectGuideRepository facultyProjectGuideRepository;
 
-    @Mock
+    @MockBean
     private EmailServiceImpl emailService;
 
     @InjectMocks
     private ProjectServiceImpl projectService;
 
-    @Autowired
+    @Mock
     private ProjectRepository actualProjectRepository;
 
-    @Autowired
+    @Mock
     private StudentRepository actualStudentRepository;
 
-    @Autowired
+    @Mock
     private FacultyRepository actualFacultyRepository;
 
-    @Autowired
+    @Mock
     private FacultyProjectGuideRepository actualFacultyProjectGuideRepository;
 
     @BeforeEach
@@ -210,11 +212,7 @@ public class ProjectServiceImplTest {
         teamMemberWithProject.setProjectId(1L);  // Team member already has a project
         when(studentRepository.findById("STU002")).thenReturn(Optional.of(teamMemberWithProject));
 
-        // Mock the other team member (STU003) who does not have a project
-        Student teamMemberWithoutProject = new Student();
-        teamMemberWithoutProject.setUsn("STU003");
-        teamMemberWithoutProject.setProjectId(null);  // No project
-        when(studentRepository.findById("STU003")).thenReturn(Optional.of(teamMemberWithoutProject));
+        // No need to mock STU003 since the logic fails with STU002
 
         // Expect that an exception is thrown due to STU002 already being part of another project
         NotFoundException exception = assertThrows(NotFoundException.class, () -> {

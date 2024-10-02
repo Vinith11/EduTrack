@@ -8,19 +8,24 @@ import com.vini.backend.repositories.FacultyRepository;
 import com.vini.backend.repositories.InternshipRepository;
 import com.vini.backend.repositories.StudentRepository;
 import com.vini.backend.service.internship.InternshipServiceImpl;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class InternshipServiceImplTest {
 
     @Mock
@@ -154,6 +159,8 @@ public class InternshipServiceImplTest {
     @Test
     public void testUpdateInternship_NotFound() {
         // Arrange
+        lenient().when(studentRepository.findById("USN123")).thenReturn(Optional.of(student));
+        lenient().when(facultyRepository.findByFacultyUid("FACULTY123")).thenReturn(faculty);
         when(internshipRepository.findById(4L)).thenReturn(Optional.empty());
 
         // Act & Assert
@@ -161,6 +168,8 @@ public class InternshipServiceImplTest {
             internshipService.updateInternship(4L, internship);
         });
     }
+
+
 
     @Test
     public void testDeleteInternship_Success() throws NotFoundException {
